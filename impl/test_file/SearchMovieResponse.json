@@ -1,0 +1,75 @@
+{
+    "movies": [
+        {
+            "title": "The Prestige",
+            "year": "2006",
+            "imdbID": "tt0482571",
+            "type": "movie",
+            "poster": "https://m.media-amazon.com/images/M/MV5BMjA4NDI0MTIxNF5BMl5BanBnXkFtZTYwNTM0MzY2._V1_SX300.jpg"
+        },
+        {
+            "title": "The Prestige: Now That's Magic",
+            "year": "2006",
+            "imdbID": "tt0939651",
+            "type": "movie",
+            "poster": "N/A"
+        },
+        {
+            "title": "Paris Prestige",
+            "year": "2016",
+            "imdbID": "tt4943706",
+            "type": "movie",
+            "poster": "https://m.media-amazon.com/images/M/MV5BNDE5NGQwYTgtMTAyOS00YmRkLTllNWQtNDhkNzVlZWE4OGI0L2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyNDkzNTM2ODg@._V1_SX300.jpg"
+        },
+        {
+            "title": "Prestige",
+            "year": "1931",
+            "imdbID": "tt0023352",
+            "type": "movie",
+            "poster": "https://m.media-amazon.com/images/M/MV5BMDEwNmJkYTYtNDk3Zi00YjI4LTgzNWEtNmI4MGE5MGI5OGUwXkEyXkFqcGdeQXVyNTUyNzA5ODE@._V1_SX300.jpg"
+        },
+        {
+            "title": "Necklace of Prestige",
+            "year": "2013",
+            "imdbID": "tt4615418",
+            "type": "movie",
+            "poster": "https://m.media-amazon.com/images/M/MV5BMTc5NjUxNTk2NF5BMl5BanBnXkFtZTgwMjE2ODM0NTE@._V1_SX300.jpg"
+        },
+        {
+            "title": "Massacre for Prestige: The Hidden Worlds of Power",
+            "year": "1974",
+            "imdbID": "tt4536522",
+            "type": "movie",
+            "poster": "N/A"
+        },
+        {
+            "title": "Las voces del Prestige",
+            "year": "2005",
+            "imdbID": "tt0830841",
+            "type": "movie",
+            "poster": "N/A"
+        },
+        {
+            "title": "Social Prestige",
+            "year": "1928",
+            "imdbID": "tt0350138",
+            "type": "movie",
+            "poster": "N/A"
+        },
+        {
+            "title": "Aguiño, sobrevivr al prestige",
+            "year": "2003",
+            "imdbID": "tt0480334",
+            "type": "movie",
+            "poster": "N/A"
+        },
+        {
+            "title": "Prestige, desastre en la costa de la muerte",
+            "year": "2003",
+            "imdbID": "tt0480448",
+            "type": "movie",
+            "poster": "N/A"
+        }
+    ],
+    "totalResult": 13
+}
