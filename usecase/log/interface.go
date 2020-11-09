@@ -6,7 +6,7 @@ import (
 
 type Repository interface {
 	Create(e entity.Log) error
-	Get(id int64) *entity.Log
+	Get(id int64) (*entity.Log,error)
 }
 
 type UseCase interface {

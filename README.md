@@ -51,7 +51,7 @@ curl -X POST \
 
 ## Test GRPC
 ```
-cd client/
+cd cmd/client/
 go run client_grpc.go
 ```
 

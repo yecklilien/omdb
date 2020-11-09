@@ -4,7 +4,7 @@ import (
 	"context"
 	"log"
 
-	"github.com/yecklilien/OMDB/movie"
+	"github.com/yecklilien/OMDB/api/presenter"
 	"google.golang.org/grpc"
 )
 
@@ -15,7 +15,7 @@ func main() {
 	}
 
 	defer conn.Close()
-	client := movie.NewMovieAPIClient(conn)
+	client := presenter.NewMovieAPIClient(conn)
 
 	searchMovieResponse, err := client.SearchMovie(context.Background(), constructSearchMovieRequest())
 	if err != nil {
@@ -30,15 +30,15 @@ func main() {
 	log.Printf("GetMovieDetailResponse: %v", getMovieDetailResponse)
 }
 
-func constructSearchMovieRequest() *movie.SearchMovieRequest {
-	return &movie.SearchMovieRequest{
+func constructSearchMovieRequest() *presenter.SearchMovieRequest {
+	return &presenter.SearchMovieRequest{
 		Page:  1,
 		Query: "Batman",
 	}
 }
 
-func constructGetMovieDetailRequest() *movie.GetMovieDetailRequest {
-	return &movie.GetMovieDetailRequest{
+func constructGetMovieDetailRequest() *presenter.GetMovieDetailRequest {
+	return &presenter.GetMovieDetailRequest{
 		ImdbID: "tt2166834",
 	}
 }

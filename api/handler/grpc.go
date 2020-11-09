@@ -3,13 +3,14 @@ package handler
 import (
 	"context"
 	"time"
+	logger "log"
 
-	"github.com/yecklilien/OMDB/usecase/movie"
-	"github.com/yecklilien/OMDB/usecase/log"
-	"github.com/yecklilien/OMDB/entity"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"github.com/yecklilien/OMDB/api/presenter"
+	"github.com/yecklilien/OMDB/usecase/movie"
+	"github.com/yecklilien/OMDB/usecase/log"
+	"github.com/yecklilien/OMDB/entity"
 )
 
 //GRPCHandler to be implemented when register grpc
@@ -42,12 +43,14 @@ func (handler *GRPCHandler) SearchMovie(ctx context.Context, request *presenter.
 		})
 
 	if err!=nil {
+		logger.Printf("method SearchMovie got error : %v", err)
 		return nil, status.Errorf(codes.Internal, "method SearchMovie got error" + err.Error())
 	}
 	
 	response, err:=constructSearchMovieResponse(*searchMovieResult)
 
 	if err!=nil {
+		logger.Printf("method SearchMovie got error : %v", err)
 		return nil, status.Errorf(codes.Internal, "method SearchMovie got error" + err.Error())
 	}
 	

@@ -2,35 +2,43 @@ package main
 
 import (
 	"fmt"
-	"log"
+	logger "log"
 	"net/http"
 	"os"
 
 	"github.com/gorilla/mux"
 	"github.com/gorilla/rpc"
 	"github.com/gorilla/rpc/json"
-	"github.com/yecklilien/OMDB/impl"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
+
+	"github.com/yecklilien/OMDB/api/handler"
+	"github.com/yecklilien/OMDB/repository"
+	"github.com/yecklilien/OMDB/usecase/log"
+	"github.com/yecklilien/OMDB/usecase/movie"
+	
 )
 
 func main() {
 
 	db, err := gorm.Open(mysql.Open(constructDSN()), &gorm.Config{})
 	if err != nil {
-		log.Fatalf("failed to connect DB: %v with DSN:%v", err, constructDSN())
-		os.Exit(1)
+		logger.Fatalf("failed to connect DB: %v with DSN:%v", err, constructDSN())
 	}
 
-	movieService := impl.NewMovieAPI(db, os.Getenv("OMDB_API_KEY"))
+	movieService := movie.NewService(os.Getenv("OMDB_API_KEY"))
+
+	logRepo := repository.NewLog(db)
+
+	logService := log.NewService(logRepo)
+
+	handler := handler.NewJSONHTTPHandler(movieService, logService)
 
 	server := rpc.NewServer()
 	server.RegisterCodec(json.NewCodec(), "application/json")
 	server.RegisterCodec(json.NewCodec(), "application/json;charset=UTF-8")
 
-	rpcService := impl.NewMovieAPIHTTPJSONRPCServer(movieService)
-
-	server.RegisterService(rpcService, "rpc")
+	server.RegisterService(handler, "rpc")
 
 	router := mux.NewRouter()
 	router.Handle("/", server)

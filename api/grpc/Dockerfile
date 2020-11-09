@@ -5,8 +5,8 @@
 FROM golang:alpine as builder
 RUN mkdir /build
 ADD . /build/
-WORKDIR /build/server/json_rpc_http
-RUN go build server.go
+WORKDIR /build/api/grpc
+RUN go build main.go
 
 #DEPLOY
 FROM alpine
@@ -19,6 +19,6 @@ RUN chmod +x /app/wait
 # Deploy
 RUN adduser -S -D -H -h /app appuser
 USER appuser
-COPY --from=builder /build/server/json_rpc_http/server /app/
+COPY --from=builder /build/api/grpc/main /app/
 WORKDIR /app
-CMD [ "./server" ]
+CMD [ "./main" ]

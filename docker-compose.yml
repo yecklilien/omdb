@@ -7,7 +7,7 @@ services:
     grpc:
         build:
             context: .
-            dockerfile: ./server/grpc/Dockerfile
+            dockerfile: ./api/grpc/Dockerfile
         ports:
             - "9001:9001"
         environment:
@@ -23,11 +23,11 @@ services:
         depends_on: 
             - db
         command: 
-            sh -c "./wait && ./server"
+            sh -c "./wait && ./main"
     http:
         build: 
             context: .
-            dockerfile: ./server/json_rpc_http/Dockerfile
+            dockerfile: ./api/json_rpc_http/Dockerfile
         ports:
             - "9002:9002"
         environment:
@@ -43,7 +43,7 @@ services:
         depends_on: 
             - db
         command: 
-            sh -c "./wait && ./server"
+            sh -c "./wait && ./main"
     db:
         image: mysql:8
         restart: always
