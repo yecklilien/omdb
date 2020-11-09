@@ -4,7 +4,7 @@ import (
 	"errors"
 	"log"
 	"github.com/yecklilien/OMDB/movie"
-	"github.com/yecklilien/OMDB/logger/entity"
+	"github.com/yecklilien/OMDB/entity"
 	"encoding/json"
 	"strconv"
 	"time"
@@ -188,15 +188,15 @@ func getRating(spec ratingOMDB, result chan *movie.Rating) {
 	}
 }
 
-func constructLoggerEntityFromSearchMovieRequest(spec *movie.SearchMovieRequest) *entity.LogEntity {
-	return &entity.LogEntity{
+func constructLoggerEntityFromSearchMovieRequest(spec *movie.SearchMovieRequest) *entity.Log {
+	return &entity.Log{
 		Timestamp : time.Now().UnixNano(),
 		Request : spec.String(),
 	}
 }
 
-func constructLoggerEntityFromGetMovieDetailRequest(spec *movie.GetMovieDetailRequest) *entity.LogEntity {
-	return &entity.LogEntity{
+func constructLoggerEntityFromGetMovieDetailRequest(spec *movie.GetMovieDetailRequest) *entity.Log {
+	return &entity.Log{
 		Timestamp : time.Now().UnixNano(),
 		Request : spec.String(),
 	}
